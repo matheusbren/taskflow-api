@@ -9,19 +9,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model
 {
-use HasFactory;
+    use HasFactory;
+
     protected $fillable = [
-        "project_id",
-        "title",
-        "description",
-        "status",
-        "priority",
-        "due_date",
+        'project_id',
+        'title',
+        'description',
+        'status',
+        'priority',
+        'due_date',
     ];
 
     protected $casts = [
-        "project_id" => "integer",
-        "due_date" => "date",
+        'project_id' => 'integer',
+        'due_date' => 'date',
     ];
 
     public function project(): BelongsTo
@@ -31,8 +32,8 @@ use HasFactory;
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, "tag_task")
-        ->withTimestamps();
+        return $this->belongsToMany(Tag::class, 'tag_task')
+            ->withTimestamps();
     }
 }
 

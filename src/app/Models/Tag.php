@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -9,19 +8,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tag extends Model
 {
-use HasFactory;
+    use HasFactory;
+
     protected $fillable = [
-        "name",
-        "color",
+        'name',
+        'color',
     ];
 
     protected $casts = [
-        "color" => "string",
+        'color' => 'string',
     ];
 
     public function tasks(): BelongsToMany
     {
-        return $this->belongsToMany(Task::class, "tag_task")
-        ->withTimestamps();
+        return $this->belongsToMany(Task::class, 'tag_task')
+            ->withTimestamps();
     }
 }
